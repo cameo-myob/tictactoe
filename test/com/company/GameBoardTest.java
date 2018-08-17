@@ -40,10 +40,4 @@ class GameBoardTest {
         GameBoard actualGameBoard = new GameBoard();
         assertFalse(actualGameBoard.isDraw());
     }
-
-
-    // checks if move will fit in board
-    // adds move to board
-    // check if move won game
-    // check if move drew game
 }

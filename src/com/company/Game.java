@@ -20,4 +20,5 @@ public class Game {
     //
 
 
+    GameBoard gameBoard = new GameBoard();
 }
