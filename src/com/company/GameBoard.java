@@ -7,7 +7,7 @@ package com.company;
 // check if move drew game
 
 public class GameBoard {
-    private String[][] gameBoard = {{"", "", ""}, {"", "", ""}, {"", "", ""}};
+    private String[][] gameBoard = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
     private int remainingMoves = 9;
 
 
@@ -17,11 +17,11 @@ public class GameBoard {
 
     public boolean isValidMove(String userInput){
         String[] userMove = userInput.split(",");
-        int xLoc = Integer.parseInt(userMove[0]);
-        int yLoc = Integer.parseInt(userMove[1]);
-        if(this.gameBoard[xLoc][yLoc] == ""){
+        int xLoc = (Integer.parseInt(userMove[0]) - 1);
+        int yLoc = (Integer.parseInt(userMove[1]) - 1);
+        if(this.gameBoard[xLoc][yLoc].trim().isEmpty()){
             return true;
-        } else return false;
+        } return false;
     }
 
     public String[][] addMove(String userInput, String userToken){
@@ -36,38 +36,38 @@ public class GameBoard {
     public boolean isWon(){
         if(isHorizontalWin() || isVerticalWin() || isDiagonalWin()){
             return true;
-        } else return false;
+        } return false;
     }
 
     private boolean isHorizontalWin(){
         String[][] board = this.gameBoard;
-        if(board[0][0].equals(board[0][1]) && board[0][0].equals(board[0][2]) && !board[0][0].isEmpty()){
+        if(board[0][0].equals(board[0][1]) && board[0][0].equals(board[0][2]) && !board[0][0].trim().isEmpty()){
             return true;
-        } else if (board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && !board[0][0].isEmpty()){
+        } else if (board[1][0].equals(board[1][1]) && board[1][0].equals(board[1][2]) && !board[1][0].trim().isEmpty()){
             return true;
-        } else if (board[2][0].equals(board[2][1]) && board[2][0].equals(board[2][2]) && !board[0][0].isEmpty()){
+        } else if (board[2][0].equals(board[2][1]) && board[2][0].equals(board[2][2]) && !board[2][0].trim().isEmpty()){
             return true;
-        } else return false;
+        } return false;
     }
 
     private boolean isVerticalWin(){
         String[][] board = this.gameBoard;
-        if(board[0][0].equals(board[1][0]) && board[0][0].equals(board[2][0]) && !board[0][0].isEmpty()){
+        if(board[0][0].equals(board[1][0]) && board[0][0].equals(board[2][0]) && !board[0][0].trim().isEmpty()){
             return true;
-        } else if (board[0][1].equals(board[1][1]) && board[0][1].equals(board[2][1]) && !board[0][1].isEmpty()){
+        } else if (board[0][1].equals(board[1][1]) && board[0][1].equals(board[2][1]) && !board[0][1].trim().isEmpty()){
             return true;
-        } else if (board[0][2].equals(board[1][2]) && board[0][2].equals(board[2][2]) && !board[0][2].isEmpty()){
+        } else if (board[0][2].equals(board[1][2]) && board[0][2].equals(board[2][2]) && !board[0][2].trim().isEmpty()){
             return true;
-        } else return false;
+        } return false;
     }
 
     private boolean isDiagonalWin(){
         String[][] board = this.gameBoard;
-        if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]) && !board[0][0].isEmpty()){
+        if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]) && !board[0][0].trim().isEmpty()){
             return true;
-        } else if (board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][2]) && !board[0][2].isEmpty()){
+        } else if (board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][2]) && !board[0][2].trim().isEmpty()){
             return true;
-        } else return false;
+        } return false;
     }
 
     public boolean isDraw(){
