@@ -3,7 +3,7 @@ package com.company;
 import java.util.Scanner;
 
 public class ConsolePrompt implements Prompt{
-    Scanner input = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in);
 
     public void gameWelcome(){
         System.out.println("Welcome to Tic Tac Toe!");

@@ -4,24 +4,24 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GameBoardTest {
+class TicTacToeBoardTest {
     @Test
     void shouldCreateBoard(){
-        GameBoard actualGameBoard = new GameBoard();
+        GameBoard actualGameBoard = new TicTacToeBoard();
         String[][] expectedGameBoard = {{"", "", ""}, {"", "", ""}, {"", "", ""}};
         assertArrayEquals(expectedGameBoard, actualGameBoard.returnBoard());
     }
 
     @Test
     void shouldCheckForEmptySpace(){
-        GameBoard actualGameBoard = new GameBoard();
+        GameBoard actualGameBoard = new TicTacToeBoard();
         assertTrue(actualGameBoard.isValidMove("1,1"));
 
     }
 
     @Test
     void shouldAddMoveToBoard(){
-        GameBoard actualGameBoard = new GameBoard();
+        GameBoard actualGameBoard = new TicTacToeBoard();
         String userMove = "1,1";
         String userToken = "X";
 
@@ -31,13 +31,13 @@ class GameBoardTest {
 
     @Test
     void shouldCheckForWin(){
-        GameBoard actualGameBoard = new GameBoard();
+        GameBoard actualGameBoard = new TicTacToeBoard();
         assertFalse(actualGameBoard.isWon());
     }
 
     @Test
     void shouldCheckForDraw(){
-        GameBoard actualGameBoard = new GameBoard();
+        GameBoard actualGameBoard = new TicTacToeBoard();
         assertFalse(actualGameBoard.isDraw());
     }
 }
