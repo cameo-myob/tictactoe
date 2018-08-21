@@ -1,5 +1,4 @@
 package com.company;
-
 import java.util.Scanner;
 
 public class ConsolePrompt implements Prompt{
@@ -8,6 +7,23 @@ public class ConsolePrompt implements Prompt{
     public void gameWelcome(){
         System.out.println("Welcome to Tic Tac Toe!");
     }
+
+//    not implemented
+//    public boolean morePlayers(){
+//        System.out.println("Would you like to add another player? y/n ");
+//        if(input.nextLine().equals("y")){
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public Player getPlayer(){
+//        System.out.println("Please enter player name: ");
+//        String playerName = input.nextLine();
+//        System.out.println("Please choose your game token: ");
+//        String playerToken = input.nextLine();
+//        return new Player(playerName, playerToken);
+//    }
 
     public void printBoard(String[][] currentBoard){
         String displayBoard = "|---|---|---|\n";
@@ -20,8 +36,8 @@ public class ConsolePrompt implements Prompt{
         System.out.println(displayBoard);
     }
 
-    public String getUserMove(String currentPlayerToken){
-        System.out.print("Enter a coordinate x,y to place your " + currentPlayerToken + " or enter 'q' to quit: ");
+    public String getUserMove(String currentPlayerName, String currentPlayerToken){
+        System.out.print(currentPlayerName + ", enter a coordinate x,y to place your " + currentPlayerToken + " or enter 'q' to quit: ");
         return input.nextLine();
     }
 
@@ -33,8 +49,8 @@ public class ConsolePrompt implements Prompt{
         System.out.println("There seems to be another piece in this place. Please try again.");
     }
 
-    public void printWin(String currentPlayerToken){
-        System.out.println("Congratulations, Player " + currentPlayerToken + " has won the game!");
+    public void printWin(String currentPlayerName){
+        System.out.println("Congratulations, " + currentPlayerName + " has won the game!");
     }
 
     public void printDraw(){

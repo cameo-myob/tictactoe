@@ -15,7 +15,7 @@ public class TicTacToeBoard implements GameBoard {
         return this.gameBoard;
     }
 
-    public boolean isValidMove(String userInput){
+    public boolean isEmptySpace(String userInput){
         String[] userMove = userInput.split(",");
         int xLoc = (Integer.parseInt(userMove[0]) - 1);
         int yLoc = (Integer.parseInt(userMove[1]) - 1);
@@ -65,7 +65,7 @@ public class TicTacToeBoard implements GameBoard {
         String[][] board = this.gameBoard;
         if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]) && !board[0][0].trim().isEmpty()){
             return true;
-        } else if (board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][2]) && !board[0][2].trim().isEmpty()){
+        } else if (board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]) && !board[0][2].trim().isEmpty()){
             return true;
         } return false;
     }

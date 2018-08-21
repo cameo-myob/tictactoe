@@ -15,7 +15,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldCheckForEmptySpace(){
         GameBoard actualGameBoard = new TicTacToeBoard();
-        assertTrue(actualGameBoard.isValidMove("1,1"));
+        assertTrue(actualGameBoard.isEmptySpace("1,1"));
 
     }
 

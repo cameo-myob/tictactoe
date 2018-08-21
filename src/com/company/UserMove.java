@@ -1,3 +1,5 @@
+// not implemented
+
 package com.company;
 
 public class UserMove {
@@ -5,9 +7,9 @@ public class UserMove {
     private int y;
 
     public UserMove(String input){
-        String[] coOrds = input.split(",");
-        this.x = Integer.parseInt(coOrds[0]);
-        this.y = Integer.parseInt(coOrds[1]);
+        String[] coOrdinates = input.split(",");
+        this.x = Integer.parseInt(coOrdinates[0]);
+        this.y = Integer.parseInt(coOrdinates[1]);
     }
 
     public int[] getMove() {
