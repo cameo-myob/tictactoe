@@ -6,11 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserMoveTest {
 
-    @Test
-    void checkReturnIntArray(){
-        UserMove move = new UserMove("1,1");
-        int[] result = {1,1};
-        assertArrayEquals(result, move.getMove());
-    }
+//    @Test
+//    void checkReturnIntArray(){
+//        UserMove move = new UserMove(1,1);
+//        int[] result = {1,1};
+//        assertArrayEquals(result, move.getMove());
+//    }
 
 }

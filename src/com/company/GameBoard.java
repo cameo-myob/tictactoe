@@ -2,9 +2,10 @@ package com.company;
 
 public interface GameBoard {
 
-    String[][] returnBoard();
-    boolean isEmptySpace(String userInput);
-    String[][] addMove(String userInput, String userToken);
+    String printBoard();
+    boolean isEmptySpace(UserMove userInput);
+    boolean addMove(UserMove userInput, String userToken);
     boolean isWon();
     boolean isDraw();
+    boolean running();
 }

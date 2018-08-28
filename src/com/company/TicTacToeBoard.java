@@ -11,26 +11,35 @@ public class TicTacToeBoard implements GameBoard {
     private int remainingMoves = 9;
 
 
-    public String[][] returnBoard() {
-        return this.gameBoard;
+    public String printBoard() {
+        String displayBoard = "|---|---|---|\n";
+        displayBoard += "| " + gameBoard[0][0] + " | " + gameBoard[0][1] + " | " + gameBoard[0][2] + " |\n";
+        displayBoard += "|---|---|---|\n";
+        displayBoard += "| " + gameBoard[1][0] + " | " + gameBoard[1][1] + " | " + gameBoard[1][2] + " |\n";
+        displayBoard += "|---|---|---|\n";
+        displayBoard += "| " + gameBoard[2][0] + " | " + gameBoard[2][1] + " | " + gameBoard[2][2] + " |\n";
+        displayBoard += "|---|---|---|";
+        return displayBoard;
     }
 
-    public boolean isEmptySpace(String userInput){
-        String[] userMove = userInput.split(",");
-        int xLoc = (Integer.parseInt(userMove[0]) - 1);
-        int yLoc = (Integer.parseInt(userMove[1]) - 1);
-        if(this.gameBoard[xLoc][yLoc].trim().isEmpty()){
+    public boolean isEmptySpace(UserMove move){
+        if(this.gameBoard[move.x][move.y].trim().isEmpty()){
             return true;
         } return false;
     }
 
-    public String[][] addMove(String userInput, String userToken){
-        String[] userMove = userInput.split(",");
-        int xLoc = (Integer.parseInt(userMove[0]) - 1);
-        int yLoc = (Integer.parseInt(userMove[1]) - 1);
-        this.gameBoard[xLoc][yLoc] = userToken;
-        this.remainingMoves--;
-        return this.gameBoard;
+    public boolean addMove(UserMove move, String userToken){
+        if(this.isEmptySpace(move)){
+            this.gameBoard[move.x][move.y] = userToken;
+            this.remainingMoves--;
+            return true;
+        } return false;
+    }
+
+    public boolean running(){
+        if(isWon() || isDraw()){
+            return false;
+        } return true;
     }
 
     public boolean isWon(){

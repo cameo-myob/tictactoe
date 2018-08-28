@@ -16,9 +16,7 @@ package com.company;
 // board check if win conditions (return true if won)
 // board check if draw conditions (return true if draw)
 // return to game
-//
 
-import java.util.ArrayList;
 
 public class Game {
     private Player currentPlayer;
@@ -36,34 +34,31 @@ public class Game {
     }
 
     public void run() {
-        prompt.gameWelcome();
-        prompt.printBoard(gameBoard.returnBoard());
+        prompt.print("Welcome to Tic Tac Toe!");
+        prompt.print(gameBoard.printBoard());
         currentPlayer = player1;
 
-        while(!gameBoard.isWon() && !gameBoard.isDraw()){
-            String userMove = prompt.getUserMove(currentPlayer.getPlayerName(),currentPlayer.getPlayerToken());
-            if(userMove.equals("q")){
-                break;
-            } else if (gameBoard.isEmptySpace(userMove)){
-                gameBoard.addMove(userMove, currentPlayer.getPlayerToken());
-                prompt.printConfirmedMove();
-                prompt.printBoard(gameBoard.returnBoard());
-                if(gameBoard.isWon()){
-                    prompt.printWin(currentPlayer.getPlayerName());
-                } else if (gameBoard.isDraw()){
-                    prompt.printDraw();
-                }
-
+        while(gameBoard.running()){
+            prompt.print(currentPlayer.getPlayerName() + ", enter a coordinate x,y to place your " + currentPlayer.getPlayerToken() + " or enter 'q' to quit: ");
+            String nextMove = prompt.getInput();
+            if(nextMove.equals("q")){ return; }
+            else if(gameBoard.addMove(parseMove(nextMove), currentPlayer.getPlayerToken())) {
+                prompt.print("Move confirmed, here is the current board:");
+                prompt.print(gameBoard.printBoard());
                 this.swapPlayer();
-            } else {
-                prompt.printInvalidMove();
-            }
+            } else { prompt.print("There is already a token in that space, please try again."); }
         }
+        prompt.print("Congratulations, " + currentPlayer.getPlayerName() + " is the winner!");
     }
 
     private void swapPlayer() {
         if(currentPlayer == player1){
             currentPlayer = player2;
         } else currentPlayer = player1;
+    }
+
+    private UserMove parseMove(String input){
+        String[] move = input.split(",");
+        return new UserMove(Integer.parseInt(move[0]) - 1, Integer.parseInt(move[1]) - 1);
     }
 }
