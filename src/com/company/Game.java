@@ -1,30 +1,14 @@
 package com.company;
 
-// create gameboard
-// create input/output
-
-// input player details
-// create players
-
-// while board.win/board.draw false
-// game get user move through input
-// game send move to board
-
-// board check if location is empty
-// -- return to start of while loop if not empty
-// board add move to board
-// board check if win conditions (return true if won)
-// board check if draw conditions (return true if draw)
-// return to game
-
-
 public class Game {
     private Player currentPlayer;
     private GameBoard gameBoard;
     private Prompt prompt;
     private Player player1;
     private Player player2;
-
+    private int remainingMoves = 9;
+    private WinChecker winChecker = new WinChecker();
+    private boolean gameRunning = true;
 
     public Game(GameBoard board, Prompt prompt, Player player1, Player player2){
         this.gameBoard = board;
@@ -38,14 +22,19 @@ public class Game {
         prompt.print(gameBoard.printBoard());
         currentPlayer = player1;
 
-        while(gameBoard.running()){
+        while(gameRunning){
             prompt.print(currentPlayer.getPlayerName() + ", enter a coordinate x,y to place your " + currentPlayer.getPlayerToken() + " or enter 'q' to quit: ");
-            String nextMove = prompt.getInput();
-            if(nextMove.equals("q")){ return; }
-            else if(gameBoard.addMove(parseMove(nextMove), currentPlayer.getPlayerToken())) {
+            String currentMove = prompt.getInput();
+            if(currentMove.equals("q")){ return; }
+            else if(gameBoard.addMoveToBoard(MoveParser.parse(currentMove), currentPlayer.getPlayerToken())) {
                 prompt.print("Move confirmed, here is the current board:");
                 prompt.print(gameBoard.printBoard());
-                this.swapPlayer();
+                if(winChecker.isWinningMove(gameBoard, currentPlayer.getPlayerToken()) || this.remainingMoves == 0){
+                    gameRunning = false;
+                    break;
+                }
+                swapPlayer();
+                remainingMoves--;
             } else { prompt.print("There is already a token in that space, please try again."); }
         }
         prompt.print("Congratulations, " + currentPlayer.getPlayerName() + " is the winner!");
@@ -55,10 +44,5 @@ public class Game {
         if(currentPlayer == player1){
             currentPlayer = player2;
         } else currentPlayer = player1;
-    }
-
-    private UserMove parseMove(String input){
-        String[] move = input.split(",");
-        return new UserMove(Integer.parseInt(move[0]) - 1, Integer.parseInt(move[1]) - 1);
     }
 }
