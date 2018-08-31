@@ -26,12 +26,14 @@ public class TicTacToeBoard implements GameBoard {
             return true;
         } return false;
     }
-
     public boolean addMoveToBoard(UserMove move, String userToken){
-        if(this.isEmptySpace(move)){
-            this.gameBoard[move.x][move.y] = userToken;
-            return true;
-        } return false;
+        if(moveIsInBoardBounds(move)){
+            if(this.isEmptySpace(move)){
+                this.gameBoard[move.x][move.y] = userToken;
+                return true;
+            } return false;
+        }
+        return false;
     }
 
     public boolean tokenMatchAtPosition(WinningCombination positions, String token){
@@ -41,5 +43,14 @@ public class TicTacToeBoard implements GameBoard {
             return true;
         }
         return false;
+    }
+
+    private boolean moveIsInBoardBounds(UserMove move){
+        try {
+            this.isEmptySpace(move);
+            return true;
+        } catch (ArrayIndexOutOfBoundsException error) {
+            return false;
+        }
     }
 }

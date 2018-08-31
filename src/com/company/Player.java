@@ -9,11 +9,11 @@ public class Player {
         this.playerToken = token;
     }
 
-    public String getPlayerName(){
+    public String getName(){
         return playerName;
     }
 
-    public String getPlayerToken(){
+    public String getToken(){
         return playerToken;
     }
 }
