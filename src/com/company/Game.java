@@ -6,7 +6,6 @@ public class Game {
     private Prompt prompt;
     private Player player1;
     private Player player2;
-    private int remainingMoves = 9;
     private WinChecker winChecker = new WinChecker();
     private boolean gameRunning = true;
 
@@ -40,8 +39,8 @@ public class Game {
 
     private void processValidMove() {
 
-        if (this.remainingMoves == 0) {
-            printBoardAndMessage("Oh no, it's a tie!");
+        if (gameBoard.isFull()) {
+            printBoardAndMessage("Oh no, it's a draw!");
             gameRunning = false;
             return;
         } else if (winChecker.isWinningMove(gameBoard, currentPlayer.getToken())) {
@@ -51,7 +50,6 @@ public class Game {
         } else
         printBoardAndMessage("Move confirmed, here is the current board:");
         swapPlayer();
-        remainingMoves--;
     }
     
     private boolean isQuitInput(String userInput) {

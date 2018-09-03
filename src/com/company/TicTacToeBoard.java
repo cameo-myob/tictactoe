@@ -53,4 +53,15 @@ public class TicTacToeBoard implements GameBoard {
             return false;
         }
     }
+
+    public boolean isFull() {
+        for(int row = 0; row < gameBoard.length; row++){
+            for(int column = 0; column < gameBoard[row].length; column++){
+                if(gameBoard[row][column].trim().isEmpty()){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

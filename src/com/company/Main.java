@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
         ConsolePrompt userPrompt = new ConsolePrompt();
         TicTacToeBoard board = new TicTacToeBoard();
-        Player player1 = getPlayerInfo(userPompt);
+        Player player1 = getPlayerInfo(userPrompt);
+        Player player2 = getPlayerInfo(userPrompt);
 
         Game ticTacToe = new Game(board, userPrompt, player1, player2);
         ticTacToe.run();

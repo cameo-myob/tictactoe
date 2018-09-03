@@ -6,4 +6,5 @@ public interface GameBoard {
     boolean isEmptySpace(UserMove userInput);
     boolean addMoveToBoard(UserMove userInput, String userToken);
     boolean tokenMatchAtPosition(WinningCombination positions, String userToken);
+    boolean isFull();
 }
