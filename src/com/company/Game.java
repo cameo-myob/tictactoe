@@ -7,7 +7,6 @@ public class Game {
     private Player player1;
     private Player player2;
     private WinChecker winChecker = new WinChecker();
-    private boolean gameRunning;
 
     public Game(GameBoard board, Prompt prompt, Player player1, Player player2) {
         this.gameBoard = board;
@@ -19,7 +18,7 @@ public class Game {
     public void run() {
         printResult(new Result(gameBoard.printBoard(), "running", "Welcome to Tic Tac Toe!"));
         currentPlayer = player1;
-        gameRunning = true;
+        boolean gameRunning = true;
 
         while(gameRunning){
             prompt.print(promptUserForMove(currentPlayer));
@@ -28,7 +27,7 @@ public class Game {
             printResult(moveResults);
 
             if(moveResults.status.equals("success")) { swapPlayer(); }
-            if(moveResults.status.equals("end")) { gameRunning = false; }
+            if(moveResults.status.equals("draw")) { gameRunning = false; }
         }
     }
 

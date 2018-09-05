@@ -34,12 +34,27 @@ class TicTacToeBoardTest {
         assertEquals(expectedResult.status, gameBoard.addMoveToBoard(move, userToken).status);
     }
 
-    @Disabled
+    @Test
     void shouldReturnDrawIfBoardFull() {
         gameBoard.addMoveToBoard(move, userToken);
-        Result expectedResult = new Result(gameBoard.printBoard(), "draw", "Oh no, it's a draw!");
+        String expectedBoard = "|---|---|---|\n";
+        expectedBoard += "| 0 | X | 0 |\n";
+        expectedBoard += "|---|---|---|\n";
+        expectedBoard += "| 0 | X | 0 |\n";
+        expectedBoard += "|---|---|---|\n";
+        expectedBoard += "| X | 0 | X |\n";
+        expectedBoard += "|---|---|---|";
 
-        assertEquals(expectedResult.status, gameBoard.addMoveToBoard(move, userToken).status);
+        gameBoard.addMoveToBoard(new UserMove(0,0), "0");
+        gameBoard.addMoveToBoard(new UserMove(0,1), "X");
+        gameBoard.addMoveToBoard(new UserMove(0,2), "0");
+        gameBoard.addMoveToBoard(new UserMove(1,0), "0");
+        gameBoard.addMoveToBoard(new UserMove(1,1), "X");
+        gameBoard.addMoveToBoard(new UserMove(1,2), "0");
+        gameBoard.addMoveToBoard(new UserMove(2,0), "X");
+        gameBoard.addMoveToBoard(new UserMove(2,1), "0");
+
+        assertEquals(expectedBoard, gameBoard.addMoveToBoard(new UserMove(2,2), "X").board);
     }
 
     @Test
@@ -56,6 +71,15 @@ class TicTacToeBoardTest {
         displayBoard += "|---|---|---|";
 
         assertEquals(displayBoard, actualResult.board);
+    }
+
+    @Test
+    void shouldMatchTokenForWinningCombination(){
+        gameBoard.addMoveToBoard(new UserMove(1,0), "X");
+        gameBoard.addMoveToBoard(new UserMove(1,1), "X");
+        gameBoard.addMoveToBoard(new UserMove(1,2), "X");
+        WinningCombination horizontalRow = new WinningCombination(new UserMove(1,0), new UserMove(1,1), new UserMove(1,2));
+        assertTrue(gameBoard.tokenMatchAtPosition(horizontalRow, userToken));
     }
 
 }
