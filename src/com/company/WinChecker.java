@@ -10,6 +10,7 @@ public class WinChecker {
     private WinningCombination leftDiagonal = new WinningCombination(new UserMove(0,2), new UserMove(1,1), new UserMove(2,0));
     private WinningCombination rightDiagonal = new WinningCombination(new UserMove(0,0), new UserMove(1,1), new UserMove(2,2));
 
+
     public boolean isWinningMove(GameBoard board, String token){
         if(isHorizontalWin(board, token) || isVerticalWin(board, token) || isDiagonalWin(board, token)){
             return true;

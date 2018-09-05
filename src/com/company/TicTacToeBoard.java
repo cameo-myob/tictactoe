@@ -1,11 +1,5 @@
 package com.company;
 
-// gets move
-// checks if move will fit in board
-// adds move to board
-// check if move won game
-// check if move drew game
-
 public class TicTacToeBoard implements GameBoard {
     private String[][] gameBoard = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
 
@@ -21,28 +15,29 @@ public class TicTacToeBoard implements GameBoard {
         return displayBoard;
     }
 
-    public boolean isEmptySpace(UserMove move){
-        if(this.gameBoard[move.x][move.y].trim().isEmpty()){
-            return true;
-        } return false;
+    private boolean isEmptySpace(UserMove move){
+        return this.gameBoard[move.x][move.y].trim().isEmpty();
     }
-    public boolean addMoveToBoard(UserMove move, String userToken){
-        if(moveIsInBoardBounds(move)){
-            if(this.isEmptySpace(move)){
-                this.gameBoard[move.x][move.y] = userToken;
-                return true;
-            } return false;
+    public Result addMoveToBoard(UserMove move, String userToken){
+        if(!moveIsInBoardBounds(move)){
+            return new Result(printBoard(), "out of bounds", "Your move must be within the bounds of the board, please try again:");
         }
-        return false;
+        if(!isEmptySpace(move)){
+            return new Result(printBoard(), "tile full", "There is already a token in that position, please try again:");
+        }
+        this.gameBoard[move.x][move.y] = userToken;
+        if(isFull()){
+            return new Result(printBoard(), "draw", "Oh no, it's a draw!");
+        }
+        return new Result(printBoard(), "success", "Move confirmed, here is the current board:");
+
     }
 
     public boolean tokenMatchAtPosition(WinningCombination positions, String token){
-        if(gameBoard[positions.firstPosition.x][positions.firstPosition.y].equals(token) &&
+        return gameBoard[positions.firstPosition.x][positions.firstPosition.y].equals(token) &&
                 gameBoard[positions.secondPosition.x][positions.secondPosition.y].equals(token) &&
-                gameBoard[positions.thirdPosition.x][positions.thirdPosition.y].equals(token)){
-            return true;
-        }
-        return false;
+                gameBoard[positions.thirdPosition.x][positions.thirdPosition.y].equals(token);
+
     }
 
     private boolean moveIsInBoardBounds(UserMove move){
@@ -54,7 +49,7 @@ public class TicTacToeBoard implements GameBoard {
         }
     }
 
-    public boolean isFull() {
+    private boolean isFull() {
         for(int row = 0; row < gameBoard.length; row++){
             for(int column = 0; column < gameBoard[row].length; column++){
                 if(gameBoard[row][column].trim().isEmpty()){
