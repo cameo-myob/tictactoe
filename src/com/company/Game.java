@@ -6,7 +6,6 @@ public class Game {
     private Prompt prompt;
     private Player player1;
     private Player player2;
-    private WinChecker winChecker = new WinChecker();
 
     public Game(GameBoard board, Prompt prompt, Player player1, Player player2) {
         this.gameBoard = board;
@@ -16,18 +15,25 @@ public class Game {
     }
 
     public void run() {
-        printResult(new Result(gameBoard.printBoard(), "running", "Welcome to Tic Tac Toe!"));
+        prompt.print("Welcome to Tic Tac Toe!");
         currentPlayer = player1;
         boolean gameRunning = true;
 
         while(gameRunning){
-            prompt.print(promptUserForMove(currentPlayer));
+            prompt.print(currentPlayer);
             UserMove currentMove = MoveParser.parse(prompt.getInput());
-            Result moveResults = gameBoard.addMoveToBoard(currentMove, currentPlayer.getToken());
-            printResult(moveResults);
 
-            if(moveResults.status.equals("success")) { swapPlayer(); }
-            if(moveResults.status.equals("draw")) { gameRunning = false; }
+            Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
+            prompt.print(result);
+
+            switch(result.getStatus()){
+                case WIN: case DRAW:{
+                    gameRunning = false;
+                }
+                case CONTINUE: {
+                    swapPlayer();
+                }
+            }
         }
     }
 
@@ -35,17 +41,5 @@ public class Game {
         if(currentPlayer == player1){
             currentPlayer = player2;
         } else currentPlayer = player1;
-    }
-
-    private void printResult(Result result){
-        prompt.print(result.message);
-        prompt.print(result.board);
-    }
-
-    private String promptUserForMove(Player player) {
-        String playerName = player.getName();
-        String playerToken = player.getToken();
-
-        return playerName + ", enter a coordinate x,y to place your " + playerToken + " or enter 'q' to quit: ";
     }
 }

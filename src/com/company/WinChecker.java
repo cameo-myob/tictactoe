@@ -11,33 +11,33 @@ public class WinChecker {
     private WinningCombination rightDiagonal = new WinningCombination(new UserMove(0,0), new UserMove(1,1), new UserMove(2,2));
 
 
-    public boolean isWinningMove(GameBoard board, String token){
-        if(isHorizontalWin(board, token) || isVerticalWin(board, token) || isDiagonalWin(board, token)){
+    public boolean isWinningMove(GameBoard board, Player player){
+        if(isHorizontalWin(board, player) || isVerticalWin(board, player) || isDiagonalWin(board, player)){
             return true;
         } return false;
     }
 
-    private boolean isHorizontalWin(GameBoard gameBoard, String token){
-        if(gameBoard.tokenMatchAtPosition(horizontalTopRow, token) ||
-                gameBoard.tokenMatchAtPosition(horizontalMiddleRow, token) ||
-                gameBoard.tokenMatchAtPosition(horizontalBottomRow, token)){
+    private boolean isHorizontalWin(GameBoard gameBoard, Player player){
+        if(gameBoard.tokenMatchAtPosition(horizontalTopRow, player) ||
+                gameBoard.tokenMatchAtPosition(horizontalMiddleRow, player) ||
+                gameBoard.tokenMatchAtPosition(horizontalBottomRow, player)){
             return true;
         }
         return false;
     }
 
-    private boolean isVerticalWin(GameBoard gameBoard, String token){
-        if(gameBoard.tokenMatchAtPosition(verticalLeftColumn, token) ||
-                gameBoard.tokenMatchAtPosition(verticalMiddleColumn, token) ||
-                gameBoard.tokenMatchAtPosition(verticalRightColumn, token)){
+    private boolean isVerticalWin(GameBoard gameBoard, Player player){
+        if(gameBoard.tokenMatchAtPosition(verticalLeftColumn, player) ||
+                gameBoard.tokenMatchAtPosition(verticalMiddleColumn, player) ||
+                gameBoard.tokenMatchAtPosition(verticalRightColumn, player)){
             return true;
         }
         return false;
     }
 
-    private boolean isDiagonalWin(GameBoard gameBoard, String token){
-        if(gameBoard.tokenMatchAtPosition(leftDiagonal, token) ||
-                gameBoard.tokenMatchAtPosition(rightDiagonal, token)){
+    private boolean isDiagonalWin(GameBoard gameBoard, Player player){
+        if(gameBoard.tokenMatchAtPosition(leftDiagonal, player) ||
+                gameBoard.tokenMatchAtPosition(rightDiagonal, player)){
             return true;
         }
         return false;

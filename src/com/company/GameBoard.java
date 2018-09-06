@@ -2,7 +2,7 @@ package com.company;
 
 public interface GameBoard {
 
-    String printBoard();
-    Result addMoveToBoard(UserMove userInput, String userToken);
-    boolean tokenMatchAtPosition(WinningCombination horizontalTopRow, String token);
+    Result addMoveToBoard(UserMove userInput, Player player);
+    boolean tokenMatchAtPosition(WinningCombination horizontalTopRow, Player player);
+    String[][] getBoard();
 }
