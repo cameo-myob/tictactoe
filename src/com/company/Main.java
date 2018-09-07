@@ -4,11 +4,12 @@ public class Main {
 
     public static void main(String[] args) {
         ConsolePrompt userPrompt = new ConsolePrompt();
-        TicTacToeBoard board = new TicTacToeBoard();
+        String[][] board = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
+        TicTacToeBoard ticTacToeBoard = new TicTacToeBoard(board);
         Player player1 = getPlayerInfo(userPrompt);
         Player player2 = getPlayerInfo(userPrompt);
 
-        Game ticTacToe = new Game(board, userPrompt, player1, player2);
+        Game ticTacToe = new Game(ticTacToeBoard, userPrompt, player1, player2);
         ticTacToe.run();
     }
 

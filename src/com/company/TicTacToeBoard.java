@@ -1,8 +1,12 @@
 package com.company;
 
 public class TicTacToeBoard implements GameBoard {
-    private String[][] gameBoard = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
+    private String[][] gameBoard;
     private WinChecker winChecker = new WinChecker();
+
+    public TicTacToeBoard(String[][] board){
+        this.gameBoard = board;
+    }
 
     public String[][] getBoard(){
         return this.gameBoard;
