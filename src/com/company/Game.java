@@ -19,15 +19,16 @@ public class Game {
         currentPlayer = player1;
         boolean gameRunning = true;
 
-        while(gameRunning){
+        while (gameRunning) {
             prompt.print(currentPlayer);
             UserMove currentMove = MoveParser.parse(prompt.getInput());
 
             Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
             prompt.print(result);
 
-            switch(result.getStatus()){
-                case WIN: case DRAW:{
+            switch (result.getStatus()) {
+                case WIN:
+                case DRAW: {
                     gameRunning = false;
                 }
                 case CONTINUE: {
@@ -38,8 +39,6 @@ public class Game {
     }
 
     private void swapPlayer() {
-        if(currentPlayer == player1){
-            currentPlayer = player2;
-        } else currentPlayer = player1;
+        currentPlayer = currentPlayer == player1 ? player2 : player1;
     }
 }

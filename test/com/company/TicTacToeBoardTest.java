@@ -14,7 +14,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Success(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -26,7 +26,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Error(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(outOfBoundsMove, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -38,7 +38,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Error(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -50,7 +50,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Draw(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(new UserMove(2,2), player0);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -72,7 +72,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Win(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -84,7 +84,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Win(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -96,7 +96,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Win(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -108,7 +108,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Win(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -120,7 +120,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Win(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -132,7 +132,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Win(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -144,7 +144,7 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Win(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -156,6 +156,6 @@ class TicTacToeBoardTest {
         Result expectedResult = new Result.Win(gameBoard);
         Result actualResult = gameBoard.addMoveToBoard(move, player);
 
-        assertEquals(expectedResult.getStatus(), actualResult.getStatus());
+        assertEquals(expectedResult, actualResult);
     }
 }

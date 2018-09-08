@@ -24,7 +24,11 @@ public abstract class Result {
     private final GameBoard board;
     private final Status status;
 
-//    abstract void apply();
+    @Override
+    public boolean equals(Object other){
+        return other instanceof Result &&
+                this.getStatus().equals(((Result) other).getStatus());
+    }
 
     public Result(GameBoard gb, Status s){
         this.board = gb;
