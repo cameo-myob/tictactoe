@@ -13,7 +13,7 @@ public class TicTacToeBoard implements GameBoard {
     }
 
     private boolean isEmptySpace(UserMove move){
-        return this.gameBoard[move.x][move.y].trim().isEmpty();
+        return this.gameBoard[move.x - 1][move.y - 1].trim().isEmpty();
     }
 
     public Result addMoveToBoard(UserMove move, Player player){
@@ -22,7 +22,7 @@ public class TicTacToeBoard implements GameBoard {
             return new Result.Error(this);
         }
 
-        this.gameBoard[move.x][move.y] = player.getToken();
+        this.gameBoard[move.x - 1][move.y - 1] = player.getToken();
 
         if(isFull()){
             return new Result.Draw(this);
@@ -36,15 +36,15 @@ public class TicTacToeBoard implements GameBoard {
 
     public boolean tokenMatchAtPosition(WinningCombination positions, Player player){
         String token = player.getToken();
-        return gameBoard[positions.firstPosition.x][positions.firstPosition.y].equals(token) &&
-                gameBoard[positions.secondPosition.x][positions.secondPosition.y].equals(token) &&
-                gameBoard[positions.thirdPosition.x][positions.thirdPosition.y].equals(token);
+        return gameBoard[positions.firstPosition.x - 1][positions.firstPosition.y - 1].equals(token) &&
+                gameBoard[positions.secondPosition.x - 1][positions.secondPosition.y - 1].equals(token) &&
+                gameBoard[positions.thirdPosition.x - 1][positions.thirdPosition.y - 1].equals(token);
 
     }
 
-    private boolean isInBoardBounds(UserMove move){
-        return (move.x >= 0 && move.x <= gameBoard.length - 1) &&
-                (move.y >= 0 && move.y <= gameBoard[0].length - 1);
+    private boolean isInBoardBounds(UserMove move) {
+        return (move.x >= 1 && move.x <= gameBoard.length) &&
+                (move.y >= 1 && move.y <= gameBoard[0].length);
     }
 
     private boolean isFull() {

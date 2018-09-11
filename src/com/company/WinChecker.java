@@ -1,14 +1,14 @@
 package com.company;
 
 public class WinChecker {
-    private WinningCombination horizontalTopRow = new WinningCombination(new UserMove(0,0), new UserMove(0,1), new UserMove(0,2));
-    private WinningCombination horizontalMiddleRow = new WinningCombination(new UserMove(1,0), new UserMove(1,1), new UserMove(1,2));
-    private WinningCombination horizontalBottomRow = new WinningCombination(new UserMove(2,0), new UserMove(2,1), new UserMove(2,2));
-    private WinningCombination verticalLeftColumn = new WinningCombination(new UserMove(0,0), new UserMove(1,0), new UserMove(2,0));
-    private WinningCombination verticalMiddleColumn = new WinningCombination(new UserMove(0,1), new UserMove(1,1), new UserMove(2,1));
-    private WinningCombination verticalRightColumn = new WinningCombination(new UserMove(0,2), new UserMove(1,2), new UserMove(2,2));
-    private WinningCombination leftDiagonal = new WinningCombination(new UserMove(0,2), new UserMove(1,1), new UserMove(2,0));
-    private WinningCombination rightDiagonal = new WinningCombination(new UserMove(0,0), new UserMove(1,1), new UserMove(2,2));
+    private WinningCombination horizontalTopRow = new WinningCombination(new UserMove(1,1), new UserMove(1,2), new UserMove(1,3));
+    private WinningCombination horizontalMiddleRow = new WinningCombination(new UserMove(2,1), new UserMove(2,2), new UserMove(2,3));
+    private WinningCombination horizontalBottomRow = new WinningCombination(new UserMove(3,1), new UserMove(3,2), new UserMove(3,3));
+    private WinningCombination verticalLeftColumn = new WinningCombination(new UserMove(1,1), new UserMove(2,1), new UserMove(3,1));
+    private WinningCombination verticalMiddleColumn = new WinningCombination(new UserMove(1,2), new UserMove(2,2), new UserMove(3,2));
+    private WinningCombination verticalRightColumn = new WinningCombination(new UserMove(1,3), new UserMove(2,3), new UserMove(3,3));
+    private WinningCombination leftDiagonal = new WinningCombination(new UserMove(1,3), new UserMove(2,2), new UserMove(3,1));
+    private WinningCombination rightDiagonal = new WinningCombination(new UserMove(1,1), new UserMove(2,2), new UserMove(3,3));
 
 
     public boolean isWinningMove(GameBoard board, Player player){

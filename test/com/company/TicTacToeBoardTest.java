@@ -17,6 +17,7 @@ class TicTacToeBoardTest {
         assertEquals(expectedResult, actualResult);
     }
 
+
     @Test
     void shouldReturnErrorIfMoveOutOfBounds(){
         GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}});
@@ -32,7 +33,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldReturnErrorIfSpaceAlreadyTaken(){
         GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", " ", " "}, {" ", "X", " "}, {" ", " ", " "}});
-        UserMove move = new UserMove(1,1);
+        UserMove move = new UserMove(2,2);
         Player player = new Player("Cameo", "X");
 
         Result expectedResult = new Result.Error(gameBoard);
@@ -44,11 +45,11 @@ class TicTacToeBoardTest {
     @Test
     void shouldReturnDrawIfBoardFull() {
         GameBoard gameBoard = new TicTacToeBoard(new String[][] {{"X", "0", "X"}, {"0", "X", "0"}, {"0", "X", " "}});
-        UserMove move = new UserMove(1,1);
+        UserMove move = new UserMove(3,3);
         Player player0 = new Player("Cameo", "0");
 
         Result expectedResult = new Result.Draw(gameBoard);
-        Result actualResult = gameBoard.addMoveToBoard(new UserMove(2,2), player0);
+        Result actualResult = gameBoard.addMoveToBoard(move, player0);
 
         assertEquals(expectedResult, actualResult);
     }
@@ -58,7 +59,7 @@ class TicTacToeBoardTest {
         GameBoard gameBoard = new TicTacToeBoard(new String[][] {{"X", "X", "X"}, {" ", " ", " "}, {" ", " ", " "}});
         Player player = new Player("Cameo", "X");
 
-        WinningCombination horizontalRow = new WinningCombination(new UserMove(0,0), new UserMove(0,1), new UserMove(0,2));
+        WinningCombination horizontalRow = new WinningCombination(new UserMove(1,1), new UserMove(1,2), new UserMove(1,3));
 
         assertTrue(gameBoard.tokenMatchAtPosition(horizontalRow, player));
     }
@@ -66,91 +67,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldReturnWinForTopHorizontalRow() {
         GameBoard gameBoard = new TicTacToeBoard(new String[][] {{"X", "X", " "}, {" ", " ", " "}, {" ", " ", " "}});
-        UserMove move = new UserMove(0,2);
-        Player player = new Player("Cameo", "X");
-
-        Result expectedResult = new Result.Win(gameBoard);
-        Result actualResult = gameBoard.addMoveToBoard(move, player);
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnWinForMiddleHorizontalRow() {
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", " ", " "}, {"X", "X", " "}, {" ", " ", " "}});
-        UserMove move = new UserMove(1,2);
-        Player player = new Player("Cameo", "X");
-
-        Result expectedResult = new Result.Win(gameBoard);
-        Result actualResult = gameBoard.addMoveToBoard(move, player);
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnWinForBottomHorizontalRow() {
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", " ", " "}, {" ", " ", " "}, {"X", "X", " "}});
-        UserMove move = new UserMove(2,2);
-        Player player = new Player("Cameo", "X");
-
-        Result expectedResult = new Result.Win(gameBoard);
-        Result actualResult = gameBoard.addMoveToBoard(move, player);
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnWinForLeftColumn() {
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{"X", " ", " "}, {"X", " ", " "}, {" ", " ", " "}});
-        UserMove move = new UserMove(2,0);
-        Player player = new Player("Cameo", "X");
-
-        Result expectedResult = new Result.Win(gameBoard);
-        Result actualResult = gameBoard.addMoveToBoard(move, player);
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnWinForMiddleColumn() {
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", "X", " "}, {" ", "X", " "}, {" ", " ", " "}});
-        UserMove move = new UserMove(2,1);
-        Player player = new Player("Cameo", "X");
-
-        Result expectedResult = new Result.Win(gameBoard);
-        Result actualResult = gameBoard.addMoveToBoard(move, player);
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnWinForRightColumn() {
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", " ", "X"}, {" ", " ", "X"}, {" ", " ", " "}});
-        UserMove move = new UserMove(2,2);
-        Player player = new Player("Cameo", "X");
-
-        Result expectedResult = new Result.Win(gameBoard);
-        Result actualResult = gameBoard.addMoveToBoard(move, player);
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnWinForLeftDiagonal() {
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{"X", " ", " "}, {" ", "X", " "}, {" ", " ", " "}});
-        UserMove move = new UserMove(2,2);
-        Player player = new Player("Cameo", "X");
-
-        Result expectedResult = new Result.Win(gameBoard);
-        Result actualResult = gameBoard.addMoveToBoard(move, player);
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnWinForRightDiagonal() {
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", " ", "X"}, {" ", "X", " "}, {" ", " ", " "}});
-        UserMove move = new UserMove(2,0);
+        UserMove move = new UserMove(1,3);
         Player player = new Player("Cameo", "X");
 
         Result expectedResult = new Result.Win(gameBoard);
