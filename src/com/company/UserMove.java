@@ -8,4 +8,11 @@ public class UserMove {
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public boolean equals(Object other){
+        return other instanceof UserMove &&
+                this.x == ((UserMove)other).x &&
+                this.y == ((UserMove)other).y;
+    }
 }
