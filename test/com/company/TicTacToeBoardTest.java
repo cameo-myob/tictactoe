@@ -7,7 +7,8 @@ class TicTacToeBoardTest {
 
     @Test
     void shouldAddMoveToBoard(){
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}});
+        GameBoardFactory tttBoard = new TicTacToeBoardFactory();
+        GameBoard gameBoard = tttBoard.createBoard("empty");
         UserMove move = new UserMove(1,1);
         Player player = new Player("Cameo", "X");
 
@@ -20,7 +21,8 @@ class TicTacToeBoardTest {
 
     @Test
     void shouldReturnErrorIfMoveOutOfBounds(){
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}});
+        GameBoardFactory tttBoard = new TicTacToeBoardFactory();
+        GameBoard gameBoard = tttBoard.createBoard("empty");
         Player player = new Player("Cameo", "X");
         UserMove outOfBoundsMove = new UserMove(1,5);
 
@@ -56,7 +58,8 @@ class TicTacToeBoardTest {
 
     @Test
     void shouldMatchTokenForWinningCombination(){
-        GameBoard gameBoard = new TicTacToeBoard(new String[][] {{"X", "X", "X"}, {" ", " ", " "}, {" ", " ", " "}});
+        GameBoardFactory tttBoard = new TicTacToeBoardFactory();
+        GameBoard gameBoard = tttBoard.createBoard("win");
         Player player = new Player("Cameo", "X");
 
         WinningCombination horizontalRow = new WinningCombination(new UserMove(1,1), new UserMove(1,2), new UserMove(1,3));

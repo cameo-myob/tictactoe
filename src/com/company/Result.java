@@ -18,7 +18,7 @@ public abstract class Result {
 
         private String message;
     }
-    
+
     private final GameBoard board;
     private final Status status;
 

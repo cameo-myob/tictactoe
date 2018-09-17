@@ -1,6 +1,6 @@
 package com.company;
 
-public class TicTacToeBoard implements GameBoard {
+public class TicTacToeBoard extends GameBoard {
     private String[][] gameBoard;
     private WinChecker winChecker = new WinChecker();
 
@@ -31,7 +31,6 @@ public class TicTacToeBoard implements GameBoard {
             return new Result.Win(this);
         }
         return new Result.Success(this);
-
     }
 
     public boolean tokenMatchAtPosition(WinningCombination positions, Player player){
@@ -39,7 +38,6 @@ public class TicTacToeBoard implements GameBoard {
         return gameBoard[positions.firstPosition.x - 1][positions.firstPosition.y - 1].equals(token) &&
                 gameBoard[positions.secondPosition.x - 1][positions.secondPosition.y - 1].equals(token) &&
                 gameBoard[positions.thirdPosition.x - 1][positions.thirdPosition.y - 1].equals(token);
-
     }
 
     private boolean isInBoardBounds(UserMove move) {

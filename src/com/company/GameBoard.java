@@ -1,8 +1,8 @@
 package com.company;
 
-public interface GameBoard {
+public abstract class GameBoard {
 
-    Result addMoveToBoard(UserMove userInput, Player player);
-    boolean tokenMatchAtPosition(WinningCombination horizontalTopRow, Player player);
-    String[][] getBoard();
+    abstract Result addMoveToBoard(UserMove userInput, Player player);
+    abstract boolean tokenMatchAtPosition(WinningCombination horizontalTopRow, Player player);
+    abstract String[][] getBoard();
 }
