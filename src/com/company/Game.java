@@ -12,36 +12,21 @@ public class Game {
         this.prompt = prompt;
         this.player1 = player1;
         this.player2 = player2;
+        this.currentPlayer = player1;
     }
 
-    // TODO: return result instead of void
-    public void run() {
-        prompt.print("Welcome to Tic Tac Toe!");
-        currentPlayer = player1;
-        boolean gameRunning = true;
-
-        while (gameRunning) {
+    public Result gameLoop() {
+        prompt.print(currentPlayer);
+        String userInput = prompt.getInput();
+        while(!InputValidator.validate(userInput)){
             prompt.print(currentPlayer);
-            String userInput = prompt.getInput();
-            while(!InputValidator.validate(userInput)){
-                prompt.print(currentPlayer);
-                userInput = prompt.getInput();
-            }
-            UserMove currentMove = MoveParser.parse(userInput);
-
-            Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
-            prompt.print(result);
-
-            switch (result.getStatus()) {
-                case WIN:
-                case DRAW: {
-                    gameRunning = false;
-                }
-                case CONTINUE: {
-                    swapPlayer();
-                }
-            }
+            userInput = prompt.getInput();
         }
+        UserMove currentMove = MoveParser.parse(userInput);
+        Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
+        prompt.print(result);
+        if (result.getStatus().equals(Result.Status.CONTINUE)) { swapPlayer();}
+        return result;
     }
 
     private void swapPlayer() {

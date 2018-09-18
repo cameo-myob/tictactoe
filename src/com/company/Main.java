@@ -10,7 +10,10 @@ public class Main {
         Player player2 = getPlayerInfo(userPrompt);
 
         Game ticTacToe = new Game(emptyBoard, userPrompt, player1, player2);
-        ticTacToe.run();
+        Result result;
+        do {
+            result = ticTacToe.gameLoop();
+        } while(result.getStatus().equals(Result.Status.CONTINUE) || result.getStatus().equals(Result.Status.ERROR));
     }
 
     private static Player getPlayerInfo(ConsolePrompt prompt){
