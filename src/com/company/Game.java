@@ -14,6 +14,7 @@ public class Game {
         this.player2 = player2;
     }
 
+    // TODO: return result instead of void
     public void run() {
         prompt.print("Welcome to Tic Tac Toe!");
         currentPlayer = player1;
@@ -21,7 +22,12 @@ public class Game {
 
         while (gameRunning) {
             prompt.print(currentPlayer);
-            UserMove currentMove = MoveParser.parse(prompt.getInput());
+            String userInput = prompt.getInput();
+            while(!InputValidator.validate(userInput)){
+                prompt.print(currentPlayer);
+                userInput = prompt.getInput();
+            }
+            UserMove currentMove = MoveParser.parse(userInput);
 
             Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
             prompt.print(result);
