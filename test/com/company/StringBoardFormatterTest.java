@@ -9,7 +9,7 @@ class StringBoardFormatterTest {
     @Test
     void shouldReturnFormattedString(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("win");
+        GameBoard tttBoard = boardFactory.createWinBoard();
         Result boardResult = new Result.Win(tttBoard);
 
         StringBoardFormatter formatter = new StringBoardFormatter();

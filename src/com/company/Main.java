@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         ConsolePrompt userPrompt = new ConsolePrompt();
         GameBoardFactory tttBoardFactory = new TicTacToeBoardFactory();
-        GameBoard emptyBoard = tttBoardFactory.createBoard("empty");
+        GameBoard emptyBoard = tttBoardFactory.createEmptyBoard();
         Player player1 = getPlayerInfo(userPrompt);
         Player player2 = getPlayerInfo(userPrompt);
 

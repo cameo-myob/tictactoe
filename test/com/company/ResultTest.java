@@ -9,7 +9,7 @@ class ResultTest {
     @Test
     void shouldCreateResultWithWinStatus() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("win");
+        GameBoard tttBoard = boardFactory.createWinBoard();
         Result.Status result = new Result.Win(tttBoard).getStatus();
 
         assertTrue(result.equals(Result.Status.WIN));
@@ -18,7 +18,7 @@ class ResultTest {
     @Test
     void shouldCreateResultWithDrawStatus() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("draw");
+        GameBoard tttBoard = boardFactory.createDrawBoard();
         Result.Status result = new Result.Draw(tttBoard).getStatus();
 
         assertTrue(result.equals(Result.Status.DRAW));
@@ -27,7 +27,7 @@ class ResultTest {
     @Test
     void shouldCreateResultWithErrorStatus() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("empty");
+        GameBoard tttBoard = boardFactory.createEmptyBoard();
         Result.Status result = new Result.Error(tttBoard).getStatus();
 
         assertTrue(result.equals(Result.Status.ERROR));
@@ -36,7 +36,7 @@ class ResultTest {
     @Test
     void shouldCreateResultWithSuccessStatus() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("empty");
+        GameBoard tttBoard = boardFactory.createEmptyBoard();
         Result.Status result = new Result.Success(tttBoard).getStatus();
 
         assertTrue(result.equals(Result.Status.SUCCESS));

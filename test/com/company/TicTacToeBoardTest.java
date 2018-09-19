@@ -8,7 +8,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldAddMoveToBoard(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("empty");
+        GameBoard tttBoard = boardFactory.createEmptyBoard();
         UserMove move = new UserMove(1,1);
         Player player = new Player("Cameo", "X");
 
@@ -21,7 +21,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldReturnErrorIfMoveOutOfBounds(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("empty");
+        GameBoard tttBoard = boardFactory.createEmptyBoard();
         Player player = new Player("Cameo", "X");
         UserMove outOfBoundsMove = new UserMove(1,5);
 
@@ -34,7 +34,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldReturnErrorIfSpaceAlreadyTaken(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("test");
+        GameBoard tttBoard = boardFactory.createTestBoard();
         UserMove move = new UserMove(2,2);
         Player player = new Player("Cameo", "X");
 
@@ -47,7 +47,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldReturnDrawIfBoardFull() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("test");
+        GameBoard tttBoard = boardFactory.createTestBoard();
         UserMove move = new UserMove(1,3);
         Player player0 = new Player("Cameo", "0");
 
@@ -60,7 +60,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldMatchTokenForWinningCombination(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("win");
+        GameBoard tttBoard = boardFactory.createWinBoard();
         Player player = new Player("Cameo", "X");
 
         WinningCombination horizontalRow = new WinningCombination(new UserMove(1,1), new UserMove(1,2), new UserMove(1,3));
@@ -71,7 +71,7 @@ class TicTacToeBoardTest {
     @Test
     void shouldReturnWinForTopHorizontalRow() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("test");
+        GameBoard tttBoard = boardFactory.createTestBoard();
         UserMove move = new UserMove(1,3);
         Player player = new Player("Cameo", "X");
 

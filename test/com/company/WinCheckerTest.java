@@ -9,7 +9,7 @@ class WinCheckerTest {
     @Test
     void shouldReturnTrueIfWinningMove() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("win");
+        GameBoard tttBoard = boardFactory.createWinBoard();
         Player player = new Player("Cameo", "X");
         WinChecker checker = new WinChecker();
 
@@ -21,7 +21,7 @@ class WinCheckerTest {
     @Test
     void shouldReturnFalseIfNotWinningMove() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("draw");
+        GameBoard tttBoard = boardFactory.createDrawBoard();
         Player player = new Player("Cameo", "X");
         WinChecker checker = new WinChecker();
 

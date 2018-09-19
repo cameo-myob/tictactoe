@@ -5,12 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TicTacToeBoardFactoryTest {
-    // win, draw, empty, test, no input
 
     @Test
     void shouldReturnWinBoard() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("win");
+        GameBoard tttBoard = boardFactory.createWinBoard();
         String[][] expectedResult = new String[][] {{"X", "X", "X"}, {" ", " ", " "}, {" ", " ", " "}};
         String[][] actualResult = tttBoard.getBoard();
 
@@ -20,7 +19,7 @@ class TicTacToeBoardFactoryTest {
     @Test
     void shouldReturnDrawBoard() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("draw");
+        GameBoard tttBoard = boardFactory.createDrawBoard();
         String[][] expectedResult = new String[][] {{"X", "0", "X"}, {"0", "X", "0"}, {"0", "X", "0"}};
         String[][] actualResult = tttBoard.getBoard();
 
@@ -30,7 +29,7 @@ class TicTacToeBoardFactoryTest {
     @Test
     void shouldReturnEmptyBoard() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("empty");
+        GameBoard tttBoard = boardFactory.createEmptyBoard();
         String[][] expectedResult = new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
         String[][] actualResult = tttBoard.getBoard();
 
@@ -40,28 +39,8 @@ class TicTacToeBoardFactoryTest {
     @Test
     void shouldReturnTestBoard() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("test");
+        GameBoard tttBoard = boardFactory.createTestBoard();
         String[][] expectedResult = new String[][] {{"X", "X", " "}, {"0", "0", "X"}, {"X", "X", "0"}};
-        String[][] actualResult = tttBoard.getBoard();
-
-        assertArrayEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnEmptyBoardOnNoInput() {
-        GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("");
-        String[][] expectedResult = new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
-        String[][] actualResult = tttBoard.getBoard();
-
-        assertArrayEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    void shouldReturnEmptyBoardOnInvalidInput() {
-        GameBoardFactory boardFactory = new TicTacToeBoardFactory();
-        GameBoard tttBoard = boardFactory.createBoard("hello");
-        String[][] expectedResult = new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
         String[][] actualResult = tttBoard.getBoard();
 
         assertArrayEquals(expectedResult, actualResult);
