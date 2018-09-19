@@ -1,6 +1,6 @@
 package com.company;
 
-public class WinningCombination {
+public final class WinningCombination {
     public final UserMove firstPosition;
     public final UserMove secondPosition;
     public final UserMove thirdPosition;

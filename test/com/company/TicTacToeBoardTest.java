@@ -18,7 +18,6 @@ class TicTacToeBoardTest {
         assertEquals(expectedResult, actualResult);
     }
 
-
     @Test
     void shouldReturnErrorIfMoveOutOfBounds(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
@@ -34,7 +33,8 @@ class TicTacToeBoardTest {
 
     @Test
     void shouldReturnErrorIfSpaceAlreadyTaken(){
-        GameBoard tttBoard = new TicTacToeBoard(new String[][] {{" ", " ", " "}, {" ", "X", " "}, {" ", " ", " "}});
+        GameBoardFactory boardFactory = new TicTacToeBoardFactory();
+        GameBoard tttBoard = boardFactory.createBoard("test");
         UserMove move = new UserMove(2,2);
         Player player = new Player("Cameo", "X");
 
@@ -46,8 +46,9 @@ class TicTacToeBoardTest {
 
     @Test
     void shouldReturnDrawIfBoardFull() {
-        GameBoard tttBoard = new TicTacToeBoard(new String[][] {{"X", "0", "X"}, {"0", "X", "0"}, {"0", "X", " "}});
-        UserMove move = new UserMove(3,3);
+        GameBoardFactory boardFactory = new TicTacToeBoardFactory();
+        GameBoard tttBoard = boardFactory.createBoard("test");
+        UserMove move = new UserMove(1,3);
         Player player0 = new Player("Cameo", "0");
 
         Result expectedResult = new Result.Draw(tttBoard);
@@ -69,7 +70,8 @@ class TicTacToeBoardTest {
 
     @Test
     void shouldReturnWinForTopHorizontalRow() {
-        GameBoard tttBoard = new TicTacToeBoard(new String[][] {{"X", "X", " "}, {" ", " ", " "}, {" ", " ", " "}});
+        GameBoardFactory boardFactory = new TicTacToeBoardFactory();
+        GameBoard tttBoard = boardFactory.createBoard("test");
         UserMove move = new UserMove(1,3);
         Player player = new Player("Cameo", "X");
 

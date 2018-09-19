@@ -24,12 +24,14 @@ public class TicTacToeBoard extends GameBoard {
 
         this.gameBoard[move.x - 1][move.y - 1] = player.getToken();
 
-        if(isFull()){
-            return new Result.Draw(this);
-        }
         if(winChecker.isWinningMove(this, player)){
             return new Result.Win(this);
         }
+
+        if(isFull()){
+            return new Result.Draw(this);
+        }
+
         return new Result.Success(this);
     }
 

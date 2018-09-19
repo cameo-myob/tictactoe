@@ -8,6 +8,8 @@ public class TicTacToeBoardFactory extends GameBoardFactory {
             return new TicTacToeBoard(new String[][] {{"X", "0", "X"}, {"0", "X", "0"}, {"0", "X", "0"}});
         }else if(input.equalsIgnoreCase("empty")){
             return new TicTacToeBoard(new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}});
+        } else if(input.equalsIgnoreCase("test")){
+            return new TicTacToeBoard(new String[][] {{"X", "X", " "}, {"0", "0", "X"}, {"X", "X", "0"}});
         }
         return new TicTacToeBoard(new String[][] {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}});
     }
