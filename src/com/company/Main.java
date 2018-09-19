@@ -13,7 +13,7 @@ public class Main {
         Result result;
         do {
             result = ticTacToe.gameLoop();
-        } while(result.getStatus().equals(Result.Status.CONTINUE) || result.getStatus().equals(Result.Status.ERROR));
+        } while(result.getStatus().equals(Result.Status.SUCCESS) || result.getStatus().equals(Result.Status.ERROR));
     }
 
     private static Player getPlayerInfo(ConsolePrompt prompt){

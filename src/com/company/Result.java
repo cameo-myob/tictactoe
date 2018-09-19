@@ -6,7 +6,7 @@ public abstract class Result {
         WIN ("Congratulations, you've won the game!"),
         DRAW ("Oh no, it's a draw!"),
         ERROR ("Something went wrong, please input another move:"),
-        CONTINUE ("Move confirmed, here is the current board:");
+        SUCCESS ("Move confirmed, here is the current board:");
 
         Status (String message){
             this.message = message;
@@ -63,7 +63,7 @@ public abstract class Result {
 
     public static class Success extends Result {
         public Success(GameBoard gb) {
-            super(gb, Status.CONTINUE);
+            super(gb, Status.SUCCESS);
         }
     }
 

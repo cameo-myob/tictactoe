@@ -25,7 +25,7 @@ public class Game {
         UserMove currentMove = MoveParser.parse(userInput);
         Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
         prompt.print(result);
-        if (result.getStatus().equals(Result.Status.CONTINUE)) { swapPlayer();}
+        if (result.getStatus().equals(Result.Status.SUCCESS)) { swapPlayer();}
         return result;
     }
 
