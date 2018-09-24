@@ -1,4 +1,6 @@
-package com.company;
+package com.company.tictactoe.board;
+
+import com.company.tictactoe.*;
 
 public class TicTacToeBoard extends GameBoard {
     private String[][] gameBoard;

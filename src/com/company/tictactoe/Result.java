@@ -1,8 +1,10 @@
-package com.company;
+package com.company.tictactoe;
+
+import com.company.tictactoe.board.GameBoard;
 
 public abstract class Result {
 
-    enum Status {
+    public enum Status {
         WIN ("Congratulations, you've won the game!"),
         DRAW ("Oh no, it's a draw!"),
         ERROR ("Something went wrong, please input another move:"),
@@ -33,11 +35,11 @@ public abstract class Result {
         this.status = s;
     }
 
-    Status getStatus(){
+    public Status getStatus(){
         return this.status;
     }
 
-    GameBoard getBoard(){
+    public GameBoard getBoard(){
         return this.board;
     }
 

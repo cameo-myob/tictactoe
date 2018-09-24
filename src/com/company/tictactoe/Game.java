@@ -1,4 +1,7 @@
-package com.company;
+package com.company.tictactoe;
+
+import com.company.console.Prompt;
+import com.company.tictactoe.board.GameBoard;
 
 public class Game {
     private Player currentPlayer;

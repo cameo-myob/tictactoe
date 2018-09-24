@@ -1,4 +1,6 @@
-package com.company;
+package com.company.tictactoe;
+
+import com.company.tictactoe.board.GameBoard;
 
 public class WinChecker {
     private WinningCombination horizontalTopRow = new WinningCombination(new UserMove(1,1), new UserMove(1,2), new UserMove(1,3));

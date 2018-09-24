@@ -1,4 +1,6 @@
-package com.company;
+package com.company.console;
+
+import com.company.tictactoe.Result;
 
 public class StringBoardFormatter {
 

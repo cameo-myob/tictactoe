@@ -1,4 +1,7 @@
-package com.company;
+package com.company.console;
+
+import com.company.tictactoe.Player;
+import com.company.tictactoe.Result;
 
 public interface Prompt {
     void print(Result output);

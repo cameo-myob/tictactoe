@@ -1,8 +1,10 @@
 package com.company;
 
+import com.company.tictactoe.MoveParser;
+import com.company.tictactoe.UserMove;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MoveParserTest {
 

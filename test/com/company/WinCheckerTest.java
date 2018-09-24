@@ -1,5 +1,10 @@
 package com.company;
 
+import com.company.tictactoe.Player;
+import com.company.tictactoe.WinChecker;
+import com.company.tictactoe.board.GameBoard;
+import com.company.tictactoe.board.GameBoardFactory;
+import com.company.tictactoe.board.TicTacToeBoardFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

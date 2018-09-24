@@ -1,4 +1,7 @@
-package com.company;
+package com.company.console;
+import com.company.tictactoe.Player;
+import com.company.tictactoe.Result;
+
 import java.util.Scanner;
 
 public class ConsolePrompt implements Prompt {

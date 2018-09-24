@@ -1,4 +1,4 @@
-package com.company;
+package com.company.tictactoe.board;
 
 public class TicTacToeBoardFactory extends GameBoardFactory {
     public GameBoard createWinBoard(){

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.tictactoe;
 
 public class Player {
     private String playerName;

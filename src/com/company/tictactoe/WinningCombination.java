@@ -1,4 +1,4 @@
-package com.company;
+package com.company.tictactoe;
 
 public final class WinningCombination {
     public final UserMove firstPosition;
