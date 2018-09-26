@@ -19,6 +19,13 @@ public class Game {
         this.currentPlayer = player1;
     }
 
+    public void start(){
+        Result result;
+        do {
+            result = this.gameLoop();
+        } while(result.getStatus().equals(Result.Status.SUCCESS) || result.getStatus().equals(Result.Status.ERROR));
+    }
+
     public Result gameLoop() {
         prompt.print(currentPlayer);
         String userInput = prompt.getInput();

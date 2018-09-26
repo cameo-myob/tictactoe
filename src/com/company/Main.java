@@ -1,15 +1,15 @@
 package com.company;
 
 import com.company.backend.handler.AddMoveHandler;
+import com.company.tictactoe.Player;
 import com.company.tictactoe.prompt.ConsolePrompt;
 import com.company.tictactoe.prompt.Prompt;
 import com.company.tictactoe.Game;
 import com.company.tictactoe.GameInterface;
-import com.company.tictactoe.Player;
-import com.company.tictactoe.Result;
 import com.company.tictactoe.board.GameBoard;
 import com.company.tictactoe.board.GameBoardFactory;
 import com.company.tictactoe.board.TicTacToeBoardFactory;
+import com.company.tictactoe.prompt.ServerPrompt;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -18,32 +18,27 @@ import java.net.InetSocketAddress;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        run(GameInterface.SERVER);
-    }
+        GameInterface backend = GameInterface.SERVER;
+        Prompt prompt = new ConsolePrompt();
 
-    public static void run(GameInterface game) throws IOException {
-        Prompt prompt;
-        switch(game){
+        switch(backend){
             case CONSOLE:{
-                 prompt = new ConsolePrompt();
+                 break;
             }
             case SERVER:{
-                HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+                HttpServer server = HttpServer.create(new InetSocketAddress(8001), 0);
                 server.createContext("/addmove", new AddMoveHandler());
                 server.start();
-                prompt = new ConsolePrompt();
+
+                prompt = new ServerPrompt();
             }
         }
 
+        Player player1 = new Player("Cameo", "X");
+        Player player2 = new Player("Test", "O");
         GameBoardFactory tttBoardFactory = new TicTacToeBoardFactory();
         GameBoard emptyBoard = tttBoardFactory.createEmptyBoard();
-        Player player1 = prompt.getPlayerInfo();
-        Player player2 = prompt.getPlayerInfo();
         Game ticTacToe = new Game(emptyBoard, prompt, player1, player2);
-
-        Result result;
-        do {
-            result = ticTacToe.gameLoop();
-        } while(result.getStatus().equals(Result.Status.SUCCESS) || result.getStatus().equals(Result.Status.ERROR));
+        ticTacToe.start();
     }
 }

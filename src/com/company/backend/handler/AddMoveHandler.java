@@ -1,11 +1,6 @@
 package com.company.backend.handler;
 
 import com.company.backend.HttpResponse;
-import com.company.tictactoe.Player;
-import com.company.tictactoe.Result;
-import com.company.tictactoe.UserMove;
-import com.company.tictactoe.board.GameBoard;
-import com.company.tictactoe.parser.JSONParser;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.json.JSONObject;
@@ -16,15 +11,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class AddMoveHandler implements HttpHandler {
-    GameBoard board;
-
-    public AddMoveHandler(GameBoard board){
-        this.board = board;
-    }
-
 
     public void handle(HttpExchange exchange) throws IOException {
         JSONObject reqBody = extractReqBody(exchange);
+        String response = "hello";
         exchange.getResponseHeaders().set("Content-Type:",
                 "application/json;");
         exchange.sendResponseHeaders(HttpResponse.OK.getCode(), response.toString().getBytes().length);
