@@ -1,4 +1,5 @@
-package com.company.console;
+package com.company.tictactoe.prompt;
+
 import com.company.tictactoe.Player;
 import com.company.tictactoe.Result;
 
@@ -28,5 +29,13 @@ public class ConsolePrompt implements Prompt {
 
     public String getInput(){
         return input.nextLine();
+    }
+
+    public Player getPlayerInfo(){
+        this.print("Please enter Player name:");
+        String playerName = this.getInput();
+        this.print("Please enter Player token:");
+        String playerToken = this.getInput();
+        return new Player(playerName, playerToken);
     }
 }

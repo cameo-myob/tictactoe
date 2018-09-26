@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.tictactoe.MoveParser;
+import com.company.tictactoe.parser.MoveParser;
 import com.company.tictactoe.UserMove;
 import org.junit.jupiter.api.Test;
 
