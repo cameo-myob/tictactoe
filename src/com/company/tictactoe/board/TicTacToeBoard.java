@@ -18,15 +18,15 @@ public class TicTacToeBoard extends GameBoard {
         return this.gameBoard[move.x - 1][move.y - 1].trim().isEmpty();
     }
 
-    public Result addMoveToBoard(UserMove move, Player player){
+    public Result addMoveToBoard(UserMove move){
 
         if(!isInBoardBounds(move) || !isEmptySpace(move)){
             return new Result.Error(this);
         }
 
-        this.gameBoard[move.x - 1][move.y - 1] = player.getToken();
+        this.gameBoard[move.x - 1][move.y - 1] = move.token;
 
-        if(winChecker.isWinningMove(this, player)){
+        if(winChecker.isWinningMove(this)){
             return new Result.Win(this);
         }
 
@@ -37,11 +37,13 @@ public class TicTacToeBoard extends GameBoard {
         return new Result.Success(this);
     }
 
-    public boolean tokenMatchAtPosition(WinningCombination positions, Player player){
-        String token = player.getToken();
-        return gameBoard[positions.firstPosition.x - 1][positions.firstPosition.y - 1].equals(token) &&
-                gameBoard[positions.secondPosition.x - 1][positions.secondPosition.y - 1].equals(token) &&
-                gameBoard[positions.thirdPosition.x - 1][positions.thirdPosition.y - 1].equals(token);
+    public boolean tokenMatchAtPosition(WinningCombination positions){
+        String firstPosition = gameBoard[positions.firstPosition.x - 1][positions.firstPosition.y - 1];
+        String secondPosition = gameBoard[positions.secondPosition.x - 1][positions.secondPosition.y - 1];
+        String thirdPosition = gameBoard[positions.thirdPosition.x - 1][positions.thirdPosition.y - 1];
+        return firstPosition.equals(secondPosition) &&
+                secondPosition.equals(thirdPosition) &&
+                !firstPosition.trim().isEmpty();
     }
 
     private boolean isInBoardBounds(UserMove move) {

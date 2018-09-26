@@ -10,7 +10,8 @@ public class JSONParser {
     public static UserMove toUserMove(JSONObject request){
         int x = request.getInt("x");
         int y = request.getInt("y");
-        return new UserMove(x, y);
+        String token = request.getString("token");
+        return new UserMove(x, y, token);
     }
 
     public static Player toPlayer(JSONObject request){

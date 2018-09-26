@@ -18,7 +18,7 @@ import java.net.InetSocketAddress;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        GameInterface backend = GameInterface.SERVER;
+        GameInterface backend = GameInterface.CONSOLE;
         Prompt prompt = new ConsolePrompt();
 
         switch(backend){

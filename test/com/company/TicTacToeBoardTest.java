@@ -18,11 +18,10 @@ class TicTacToeBoardTest {
     void shouldAddMoveToBoard(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
         GameBoard tttBoard = boardFactory.createEmptyBoard();
-        UserMove move = new UserMove(1,1);
-        Player player = new Player("Cameo", "X");
+        UserMove move = new UserMove(1,1, "X");
 
         Result expectedResult = new Result.Success(tttBoard);
-        Result actualResult = tttBoard.addMoveToBoard(move, player);
+        Result actualResult = tttBoard.addMoveToBoard(move);
 
         assertEquals(expectedResult, actualResult);
     }
@@ -31,11 +30,10 @@ class TicTacToeBoardTest {
     void shouldReturnErrorIfMoveOutOfBounds(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
         GameBoard tttBoard = boardFactory.createEmptyBoard();
-        Player player = new Player("Cameo", "X");
-        UserMove outOfBoundsMove = new UserMove(1,5);
+        UserMove outOfBoundsMove = new UserMove(1,5, "X");
 
         Result expectedResult = new Result.Error(tttBoard);
-        Result actualResult = tttBoard.addMoveToBoard(outOfBoundsMove, player);
+        Result actualResult = tttBoard.addMoveToBoard(outOfBoundsMove);
 
         assertEquals(expectedResult, actualResult);
     }
@@ -44,11 +42,10 @@ class TicTacToeBoardTest {
     void shouldReturnErrorIfSpaceAlreadyTaken(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
         GameBoard tttBoard = boardFactory.createTestBoard();
-        UserMove move = new UserMove(2,2);
-        Player player = new Player("Cameo", "X");
+        UserMove move = new UserMove(2,2, "X");
 
         Result expectedResult = new Result.Error(tttBoard);
-        Result actualResult = tttBoard.addMoveToBoard(move, player);
+        Result actualResult = tttBoard.addMoveToBoard(move);
 
         assertEquals(expectedResult, actualResult);
     }
@@ -57,11 +54,10 @@ class TicTacToeBoardTest {
     void shouldReturnDrawIfBoardFull() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
         GameBoard tttBoard = boardFactory.createTestBoard();
-        UserMove move = new UserMove(1,3);
-        Player player0 = new Player("Cameo", "0");
+        UserMove move = new UserMove(1,3, "X");
 
         Result expectedResult = new Result.Draw(tttBoard);
-        Result actualResult = tttBoard.addMoveToBoard(move, player0);
+        Result actualResult = tttBoard.addMoveToBoard(move);
 
         assertEquals(expectedResult, actualResult);
     }
@@ -70,22 +66,20 @@ class TicTacToeBoardTest {
     void shouldMatchTokenForWinningCombination(){
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
         GameBoard tttBoard = boardFactory.createWinBoard();
-        Player player = new Player("Cameo", "X");
 
-        WinningCombination horizontalRow = new WinningCombination(new UserMove(1,1), new UserMove(1,2), new UserMove(1,3));
+        WinningCombination horizontalRow = new WinningCombination(new UserMove(1,1, "X"), new UserMove(1,2, "X"), new UserMove(1,3, "X"));
 
-        assertTrue(tttBoard.tokenMatchAtPosition(horizontalRow, player));
+        assertTrue(tttBoard.tokenMatchAtPosition(horizontalRow));
     }
 
     @Test
     void shouldReturnWinForTopHorizontalRow() {
         GameBoardFactory boardFactory = new TicTacToeBoardFactory();
         GameBoard tttBoard = boardFactory.createTestBoard();
-        UserMove move = new UserMove(1,3);
-        Player player = new Player("Cameo", "X");
+        UserMove move = new UserMove(1,3, "X");
 
         Result expectedResult = new Result.Win(tttBoard);
-        Result actualResult = tttBoard.addMoveToBoard(move, player);
+        Result actualResult = tttBoard.addMoveToBoard(move);
 
         assertEquals(expectedResult, actualResult);
     }

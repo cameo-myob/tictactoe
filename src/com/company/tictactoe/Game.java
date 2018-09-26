@@ -33,8 +33,8 @@ public class Game {
             prompt.print(currentPlayer);
             userInput = prompt.getInput();
         }
-        UserMove currentMove = MoveParser.parse(userInput);
-        Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
+        UserMove currentMove = MoveParser.parse(userInput, currentPlayer.getToken());
+        Result result = gameBoard.addMoveToBoard(currentMove);
         prompt.print(result);
         if (result.getStatus().equals(Result.Status.SUCCESS)) { swapPlayer();}
         return result;
@@ -43,5 +43,4 @@ public class Game {
     private void swapPlayer() {
         currentPlayer = currentPlayer == player1 ? player2 : player1;
     }
-
 }

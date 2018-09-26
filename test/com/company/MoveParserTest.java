@@ -10,16 +10,16 @@ class MoveParserTest {
 
     @Test
     void shouldReturnUserMove(){
-        UserMove expectedResult = new UserMove(1,2);
-        UserMove actualResult = MoveParser.parse("1,2");
+        UserMove expectedResult = new UserMove(1,2, "X");
+        UserMove actualResult = MoveParser.parse("1,2", "X");
 
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
     void shouldReturnCorrectUserMoveWithExcessInput(){
-        UserMove expectedResult = new UserMove(1,2);
-        UserMove actualResult = MoveParser.parse("1,2,3,4,5,84395");
+        UserMove expectedResult = new UserMove(1,2, "X");
+        UserMove actualResult = MoveParser.parse("1,2,3,4,5,84395", "X");
 
         assertEquals(expectedResult, actualResult);
     }
