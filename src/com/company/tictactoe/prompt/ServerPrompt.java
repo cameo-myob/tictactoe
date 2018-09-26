@@ -18,10 +18,6 @@ public class ServerPrompt implements Prompt{
     };
 
     public Player getPlayerInfo(){
-        this.print("Please enter Player name:");
-        String playerName = this.getInput();
-        this.print("Please enter Player token:");
-        String playerToken = this.getInput();
-        return new Player(playerName, playerToken);
+        return new Player("hello", "hello");
     }
 }

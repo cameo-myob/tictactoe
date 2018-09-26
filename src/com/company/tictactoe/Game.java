@@ -19,7 +19,7 @@ public class Game {
         this.currentPlayer = player1;
     }
 
-    public void start(){
+    public void startGame(){
         Result result;
         do {
             result = this.gameLoop();
