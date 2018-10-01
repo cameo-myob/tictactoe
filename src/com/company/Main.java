@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        GameInterface backend = GameInterface.CONSOLE;
+        GameInterface backend = GameInterface.SERVER;
 
         switch(backend){
             case CONSOLE:{
