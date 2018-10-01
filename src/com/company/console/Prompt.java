@@ -1,4 +1,4 @@
-package com.company.tictactoe.prompt;
+package com.company.console;
 
 import com.company.tictactoe.Player;
 import com.company.tictactoe.Result;

@@ -1,11 +1,11 @@
-package com.company.tictactoe.prompt;
+package com.company.console;
 
 import com.company.tictactoe.Result;
 
 public class StringBoardFormatter {
 
     public String format(Result result){
-        String[][] board = result.getBoard().getBoard();
+        String[][] board = result.getGameBoard();
         String displayBoard = "|---|---|---|\n";
         displayBoard += "| " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " |\n";
         displayBoard += "|---|---|---|\n";

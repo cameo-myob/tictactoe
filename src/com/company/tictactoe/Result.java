@@ -39,8 +39,10 @@ public abstract class Result {
         return this.status;
     }
 
-    public GameBoard getBoard(){
-        return this.board;
+    public String getStatusMessage() { return this.status.message; }
+
+    public String[][] getGameBoard(){
+        return this.board.getBoard();
     }
 
 

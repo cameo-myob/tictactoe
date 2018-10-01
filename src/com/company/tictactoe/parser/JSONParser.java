@@ -22,9 +22,9 @@ public class JSONParser {
 
     public static JSONObject buildJSONResponse (Result result){
     JSONObject response = new JSONObject();
-    response.put("board", result.getBoard().getBoard());
+    response.put("board", result.getGameBoard());
     response.put("status", result.getStatus().toString());
-    response.put("message", result.getStatus().getMessage());
+    response.put("message", result.getStatusMessage());
     return response;
     }
 }
@@ -34,4 +34,4 @@ public class JSONParser {
 //        UserMove move = JSONParser.toUserMove(reqBody);
 //        Player player = JSONParser.toPlayer(reqBody);
 //        Result result = board.addMoveToBoard(move, player);
-//        JSONObject response = buildResponse(result);
+//        JSONObject response = buildJSONResponse(result);

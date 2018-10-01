@@ -1,6 +1,6 @@
 package com.company.tictactoe;
 
-import com.company.tictactoe.prompt.Prompt;
+import com.company.console.Prompt;
 import com.company.tictactoe.board.GameBoard;
 import com.company.tictactoe.parser.MoveParser;
 

@@ -1,4 +1,4 @@
-package com.company.tictactoe.prompt;
+package com.company.console;
 
 import com.company.tictactoe.Player;
 import com.company.tictactoe.Result;
@@ -12,7 +12,7 @@ public class ConsolePrompt implements Prompt {
     private StringBoardFormatter boardFormatter = new StringBoardFormatter();
 
     public void print(Result result){
-        System.out.println(result.getStatus().getMessage());
+        System.out.println(result.getStatusMessage());
         System.out.println(boardFormatter.format(result));
     }
 

@@ -23,7 +23,6 @@ public class AddMoveHandler implements HttpHandler {
         os.close();
     }
 
-    // does this belong to the game?
     private JSONObject extractReqBody(HttpExchange exchange) throws IOException {
         InputStream request = exchange.getRequestBody();
         JSONTokener reqBody = new JSONTokener(request);
