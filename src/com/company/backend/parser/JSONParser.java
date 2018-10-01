@@ -5,8 +5,6 @@ import com.company.tictactoe.UserMove;
 import com.company.tictactoe.board.TicTacToeBoard;
 import org.json.*;
 
-import java.util.ArrayList;
-
 public class JSONParser {
     public UserMove toUserMove(JSONObject request){
         int x = request.getInt("x");
