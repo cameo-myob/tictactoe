@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.backend.handler.TestHandler;
 import com.company.console.ConsolePrompt;
 import com.company.tictactoe.Game;
 import com.company.tictactoe.Player;
@@ -8,17 +7,10 @@ import com.company.tictactoe.Result;
 import com.company.tictactoe.board.GameBoard;
 import com.company.tictactoe.board.GameBoardFactory;
 import com.company.tictactoe.board.TicTacToeBoardFactory;
-import com.sun.net.httpserver.HttpServer;
-
-import java.io.IOException;
-import java.net.InetSocketAddress;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
-        server.createContext("/test", new TestHandler());
-        server.start();
+    public static void main(String[] args){
 
         ConsolePrompt userPrompt = new ConsolePrompt();
         GameBoardFactory tttBoardFactory = new TicTacToeBoardFactory();

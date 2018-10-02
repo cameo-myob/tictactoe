@@ -48,7 +48,6 @@ public abstract class Result {
         public Draw(GameBoard gb) {
             super(gb, Status.DRAW);
         }
-
     }
 
     public static class Win extends Result {
