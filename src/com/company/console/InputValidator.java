@@ -1,4 +1,4 @@
-package com.company.tictactoe;
+package com.company.console;
 
 public class InputValidator {
     public static boolean validate(String input){

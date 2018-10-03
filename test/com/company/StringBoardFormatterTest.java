@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.console.StringBoardFormatter;
+import com.company.console.prompt.StringBoardFormatter;
 import com.company.tictactoe.Result;
 import com.company.tictactoe.board.GameBoard;
 import com.company.tictactoe.board.GameBoardFactory;

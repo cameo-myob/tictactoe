@@ -1,4 +1,6 @@
-package com.company.tictactoe;
+package com.company.console;
+
+import com.company.tictactoe.UserMove;
 
 public class MoveParser {
 

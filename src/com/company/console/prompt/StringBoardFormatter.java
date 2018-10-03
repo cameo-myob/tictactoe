@@ -1,4 +1,4 @@
-package com.company.console;
+package com.company.console.prompt;
 
 import com.company.tictactoe.Result;
 
