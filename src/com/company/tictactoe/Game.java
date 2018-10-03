@@ -10,29 +10,48 @@ public class Game {
     private Player player1;
     private Player player2;
 
-    public Game(GameBoard board, Prompt prompt, Player player1, Player player2) {
+    public Game(GameBoard board, Prompt prompt) {
         this.gameBoard = board;
         this.prompt = prompt;
-        this.player1 = player1;
-        this.player2 = player2;
-        this.currentPlayer = player1;
     }
 
-    public Result gameLoop() {
+    public void startGame(){
+        Player player1 = getPlayerInfo();
+        Player player2 = getPlayerInfo();
+        this.currentPlayer = player1;
+        Result result;
+        do {
+            result = gameLoop();
+            prompt.print(result);
+        } while(result.getStatus().equals(Result.Status.SUCCESS) || result.getStatus().equals(Result.Status.ERROR));
+    }
+
+    private Result gameLoop() {
         prompt.print(currentPlayer);
+        UserMove currentMove = getValidMove();
+        Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
+        if (result.getStatus().equals(Result.Status.SUCCESS)) { swapPlayer();}
+        return result;
+    }
+
+    private UserMove getValidMove(){
         String userInput = prompt.getInput();
         while(!InputValidator.validate(userInput)){
             prompt.print(currentPlayer);
             userInput = prompt.getInput();
         }
-        UserMove currentMove = MoveParser.parse(userInput);
-        Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
-        prompt.print(result);
-        if (result.getStatus().equals(Result.Status.SUCCESS)) { swapPlayer();}
-        return result;
+        return MoveParser.parse(userInput);
     }
 
     private void swapPlayer() {
         currentPlayer = currentPlayer == player1 ? player2 : player1;
+    }
+
+    private Player getPlayerInfo(){
+        prompt.print("Please enter Player name:");
+        String playerName = prompt.getInput();
+        prompt.print("Please enter Player token:");
+        String playerToken = prompt.getInput();
+        return new Player(playerName, playerToken);
     }
 }
