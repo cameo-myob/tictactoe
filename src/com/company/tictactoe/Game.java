@@ -25,7 +25,6 @@ public class Game {
             prompt.print(result);
         } while(result.getStatus().equals(Result.Status.SUCCESS) || result.getStatus().equals(Result.Status.ERROR));
     }
-
     private Result gameLoop() {
         prompt.print(currentPlayer);
         UserMove currentMove = getValidMove();
