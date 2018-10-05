@@ -13,7 +13,7 @@ public class ConsoleAdaptor implements IOAdaptor {
 
     public void outputResult(Result result) {
         prompt.print(result.getStatus().getMessage());
-        prompt.print(boardFormatter.format(result));
+        prompt.print(boardFormatter.format(result.getBoard().getBoard()));
     }
 
     public void promptPlayerForMove(Player player){
