@@ -8,6 +8,6 @@ import com.company.tictactoe.WinningCombination;
 public abstract class GameBoard {
 
     public abstract Result addMoveToBoard(UserMove userInput, Player player);
-    public abstract boolean tokenMatchAtPosition(WinningCombination horizontalTopRow, Player player);
+//    public abstract boolean tokenMatchAtPosition(WinningCombination horizontalTopRow, Player player);
     public abstract String[][] getBoard();
 }

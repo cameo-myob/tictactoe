@@ -32,6 +32,7 @@ public class ConsoleAdaptor implements IOAdaptor {
     }
 
     public UserMove getValidMove(Player currentPlayer){
+        promptPlayerForMove(currentPlayer);
         String userInput = prompt.getInput();
         while(!InputValidator.validate(userInput)){
             promptPlayerForMove(currentPlayer);
@@ -39,4 +40,6 @@ public class ConsoleAdaptor implements IOAdaptor {
         }
         return MoveParser.parse(userInput);
     }
+
+
 }

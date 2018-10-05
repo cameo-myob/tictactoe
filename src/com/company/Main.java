@@ -1,7 +1,6 @@
 package com.company;
 
 import com.company.console.ConsoleAdaptor;
-import com.company.console.prompt.ConsolePrompt;
 import com.company.tictactoe.Game;
 import com.company.tictactoe.IOAdaptor;
 import com.company.tictactoe.board.GameBoard;

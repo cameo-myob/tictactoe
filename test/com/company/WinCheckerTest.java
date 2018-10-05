@@ -18,7 +18,7 @@ class WinCheckerTest {
         Player player = new Player("Cameo", "X");
         WinChecker checker = new WinChecker();
 
-        boolean isWinningMove = checker.isWinningMove(tttBoard, player);
+        boolean isWinningMove = checker.isWinningMove(tttBoard);
 
         assertTrue(isWinningMove);
     }
@@ -30,7 +30,7 @@ class WinCheckerTest {
         Player player = new Player("Cameo", "X");
         WinChecker checker = new WinChecker();
 
-        boolean isWinningMove = checker.isWinningMove(tttBoard, player);
+        boolean isWinningMove = checker.isWinningMove(tttBoard);
 
         assertFalse(isWinningMove);
     }

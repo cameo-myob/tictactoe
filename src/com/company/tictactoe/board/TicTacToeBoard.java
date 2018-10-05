@@ -26,7 +26,7 @@ public class TicTacToeBoard extends GameBoard {
 
         this.gameBoard[move.x - 1][move.y - 1] = player.getToken();
 
-        if(winChecker.isWinningMove(this, player)){
+        if(winChecker.isWinningMove(this)){
             return new Result.Win(this);
         }
 
@@ -35,13 +35,6 @@ public class TicTacToeBoard extends GameBoard {
         }
 
         return new Result.Success(this);
-    }
-
-    public boolean tokenMatchAtPosition(WinningCombination positions, Player player){
-        String token = player.getToken();
-        return gameBoard[positions.firstPosition.x - 1][positions.firstPosition.y - 1].equals(token) &&
-                gameBoard[positions.secondPosition.x - 1][positions.secondPosition.y - 1].equals(token) &&
-                gameBoard[positions.thirdPosition.x - 1][positions.thirdPosition.y - 1].equals(token);
     }
 
     private boolean isInBoardBounds(UserMove move) {

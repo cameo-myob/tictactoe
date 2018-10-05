@@ -26,8 +26,7 @@ public class Game {
     }
 
     private Result gameLoop() {
-        adaptor.promptPlayerForMove(currentPlayer);
-        UserMove currentMove = adaptor.getValidMove();
+        UserMove currentMove = adaptor.getValidMove(currentPlayer);
         Result result = gameBoard.addMoveToBoard(currentMove, currentPlayer);
         if (result.getStatus().equals(Result.Status.SUCCESS)) { swapPlayer();}
         return result;
