@@ -11,7 +11,7 @@ import java.io.OutputStream;
 
 public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
     private HttpExchange exchange;
-    private JSONObject currentRequest = new JSONObject();
+    private JSONObject currentRequest;
 
     public void handle(HttpExchange exchange) throws IOException {
         this.exchange = exchange;
@@ -31,11 +31,11 @@ public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
     }
 
     public JSONObject getCurrentRequest() throws InterruptedException {
-        while(this.currentRequest.isEmpty()){
+        while(this.currentRequest == null){
             Thread.sleep(1000);
         }
         JSONObject req = this.currentRequest;
-        this.currentRequest = new JSONObject();
+        this.currentRequest = null;
         return req;
     }
 }
