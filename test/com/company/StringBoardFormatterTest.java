@@ -18,7 +18,7 @@ class StringBoardFormatterTest {
         Result boardResult = new Result.Win(tttBoard);
 
         StringBoardFormatter formatter = new StringBoardFormatter();
-        String actualResult = formatter.format(boardResult);
+        String actualResult = formatter.format(boardResult.getBoard().getBoard());
 
         String[][] board = tttBoard.getBoard();
         String expectedResult = "|---|---|---|\n";

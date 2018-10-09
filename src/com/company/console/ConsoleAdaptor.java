@@ -16,7 +16,7 @@ public class ConsoleAdaptor implements IOAdaptor {
         prompt.print(boardFormatter.format(result.getBoard().getBoard()));
     }
 
-    public void promptPlayerForMove(Player player){
+    private void promptPlayerForMove(Player player){
         String playerName = player.getName();
         String playerToken = player.getToken();
 

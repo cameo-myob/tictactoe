@@ -1,9 +1,10 @@
 package com.company.tictactoe;
 
-public interface IOAdaptor {
-    Player getPlayerInfo();
-    void outputResult(Result output);
-    void promptPlayerForMove(Player player);
+import java.io.IOException;
 
-    UserMove getValidMove(Player player);
+public interface IOAdaptor {
+    Player getPlayerInfo() throws InterruptedException, IOException;
+    void outputResult(Result output) throws IOException;
+
+    UserMove getValidMove(Player player) throws InterruptedException;
 }
