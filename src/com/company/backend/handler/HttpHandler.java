@@ -25,21 +25,16 @@ public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
     public void sendResponse(JSONObject response) throws IOException{
         exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "http://localhost:3000");
 
-        if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
-            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, OPTIONS");
-            exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
-            exchange.sendResponseHeaders(204, -1);
-            return;
-        } else {
-            exchange.getResponseHeaders().set("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
-            exchange.getResponseHeaders().set("Content-Type:",
-                    "application/json;");
-            exchange.sendResponseHeaders(HttpResponse.OK.getCode(), response.toString().getBytes().length);
-            OutputStream os = exchange.getResponseBody();
-            os.write(response.toString().getBytes());
-            os.close();
-        }
+
+        exchange.getResponseHeaders().set("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
+        exchange.getResponseHeaders().set("Content-Type:",
+                "application/json;");
+        exchange.sendResponseHeaders(HttpResponse.OK.getCode(), response.toString().getBytes().length);
+        OutputStream os = exchange.getResponseBody();
+        os.write(response.toString().getBytes());
+        os.close();
     }
+
 
     public JSONObject getCurrentRequest() throws InterruptedException {
         while(this.currentRequest == null){
