@@ -16,13 +16,7 @@ public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
 
     public void handle(HttpExchange exchange) throws IOException {
         this.exchange = exchange;
-        InputStream request = exchange.getRequestBody();
-        Scanner scan = new Scanner(request);
-        String str = new String();
-        while (scan.hasNext())
-            str += scan.nextLine();
-        scan.close();
-        request.close();
+        String reqBody = processRequest(exchange);
 
         if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
             exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
@@ -32,9 +26,20 @@ public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
 
             return;
         } else {
-            this.currentRequest = new JSONObject(str);
+            this.currentRequest = new JSONObject(reqBody);
         }
 
+    }
+
+    private String processRequest(HttpExchange exchange) throws IOException {
+        InputStream request = exchange.getRequestBody();
+        Scanner scan = new Scanner(request);
+        String reqBody = new String();
+        while (scan.hasNext())
+            reqBody += scan.nextLine();
+        scan.close();
+        request.close();
+        return reqBody;
     }
 
     public void sendResponse(JSONObject response) throws IOException{
