@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 
 class PlayerForm extends Component {
-
     addNewPlayer(name, token){
         const url = `${process.env.REACT_APP_LOCAL_SERVER}/addplayer`
-        
+        const body = {
+            name,
+            token
+        }
+
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(name, token),
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json',
-            }
+            },
+            body: JSON.stringify(body)
         })
         .then(res => console.log(res.json()))
         .catch(err => console.error(err))
@@ -37,6 +39,8 @@ class PlayerForm extends Component {
                 <input type="text" name="token"/><br/>
                 <button className="grey-button">Submit</button>
             </form>
+
+            
         );
     }
 }

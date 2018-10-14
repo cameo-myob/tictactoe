@@ -28,7 +28,10 @@ public class ServerAdaptor implements IOAdaptor {
     public Player getPlayerInfo() throws InterruptedException, IOException {
         JSONObject req = handler.getCurrentRequest();
         Player player = new Player(req.getString("name"), req.getString("token"));
-        handler.sendResponse(new JSONObject().put("name", player.getName()).put("token", player.getToken()));
+        JSONObject res = new JSONObject();
+        res.put("name", player.getName());
+        res.put("token", player.getToken());
+        handler.sendResponse(res);
         return player;
     }
 

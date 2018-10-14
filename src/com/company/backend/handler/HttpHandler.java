@@ -1,13 +1,14 @@
 package com.company.backend.handler;
 
 import com.company.backend.HttpResponse;
+import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Scanner;
 
 public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
     private HttpExchange exchange;
@@ -16,19 +17,31 @@ public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         this.exchange = exchange;
         InputStream request = exchange.getRequestBody();
-        JSONTokener reqBody = new JSONTokener(request);
-        this.currentRequest = new JSONObject(reqBody);
+        Scanner scan = new Scanner(request);
+        String str = new String();
+        while (scan.hasNext())
+            str += scan.nextLine();
+        scan.close();
         request.close();
-        System.out.println(exchange.getRequestHeaders());
+
+        if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+            exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, OPTIONS");
+            exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
+            exchange.sendResponseHeaders(HttpResponse.NO_CONTENT.getCode(), -1);
+
+            return;
+        } else {
+            this.currentRequest = new JSONObject(str);
+        }
+
     }
 
     public void sendResponse(JSONObject response) throws IOException{
-        exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "http://localhost:3000");
+        Headers headers = exchange.getResponseHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+        headers.set("Content-Type:", "application/json;");
 
-
-        exchange.getResponseHeaders().set("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
-        exchange.getResponseHeaders().set("Content-Type:",
-                "application/json;");
         exchange.sendResponseHeaders(HttpResponse.OK.getCode(), response.toString().getBytes().length);
         OutputStream os = exchange.getResponseBody();
         os.write(response.toString().getBytes());

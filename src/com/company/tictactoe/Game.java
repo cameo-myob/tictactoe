@@ -18,7 +18,6 @@ public class Game {
 
     public void startGame() throws InterruptedException, IOException {
         this.player1 = adaptor.getPlayerInfo();
-        System.out.println(player1.getName());
         this.player2 = adaptor.getPlayerInfo();
         this.currentPlayer = player1;
 
