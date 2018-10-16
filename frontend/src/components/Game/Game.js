@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Welcome from '../Welcome/Welcome';
 import PlayerForm from '../Player/PlayerForm';
 import Board from './Board';
+import Result from './Result';
 
 
 class Game extends Component {
     state = {
-        board: [["", "", ""],["", "", ""],["", "", ""]]
+        board: [["", "", ""],["", "", ""],["", "", ""]],
+        result: null,
     }
 
     addMove(x,y){
@@ -25,9 +26,11 @@ class Game extends Component {
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
             document.getElementById(`${x},${y}`).setAttribute("disabled", "disabled")
-            this.setState({board: res.board})
+            this.setState({
+                board: res.board,
+                result: res,
+            })
         })
     }
 
@@ -45,14 +48,15 @@ class Game extends Component {
             },
             body: JSON.stringify(body)
         })
-        .then(res => console.log(res.json()))
+        .then(res => res.json())
         .catch(err => console.error(err))
     }
 
     render() {
         return(
             <div className="game">
-                <PlayerForm addNewPlayer={this.addNewPlayer.bind(this)}/>
+                <PlayerForm addNewPlayer={this.addNewPlayer}/>
+                {this.state.result ? <Result result={this.state.result}/> : ""}
                 <Board board={this.state.board} addMove={this.addMove.bind(this)}/>
             </div>
         )
