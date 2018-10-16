@@ -8,6 +8,7 @@ class Game extends Component {
     state = {
         board: [["", "", ""],["", "", ""],["", "", ""]],
         result: null,
+        players: [],
     }
 
     addMove(x,y){
@@ -49,15 +50,19 @@ class Game extends Component {
             body: JSON.stringify(body)
         })
         .then(res => res.json())
+        .then(res => {
+            this.setState({
+                players: this.state.players.concat(res.token)
+            })
+        })
         .catch(err => console.error(err))
     }
 
     render() {
         return(
             <div className="game">
-                <PlayerForm addNewPlayer={this.addNewPlayer}/>
                 {this.state.result ? <Result result={this.state.result}/> : ""}
-                <Board board={this.state.board} addMove={this.addMove.bind(this)}/>
+                {this.state.players.length < 2 ? <PlayerForm addNewPlayer={this.addNewPlayer.bind(this)}/> : <Board board={this.state.board} addMove={this.addMove.bind(this)}/>}
             </div>
         )
     }
